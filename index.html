@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín 🐱💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+            padding: 50px;
+        }
+        h1 {
+            color: #d6336c;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .valentine-img {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .yes {
+            background-color: #ff4d79;
+            color: white;
+            font-size: 18px;
+        }
+        .no {
+            background-color: #cccccc;
+            color: black;
+            position: absolute;
+            font-size: 18px;
+        }
+        .message {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #ff4d79;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Quieres ser mi San Valentín? ❤️🌠</h1>
+
+    <div class="container">
+        <img src="https://i.pinimg.com/564x/6a/fb/2b/6afb2b8d5d5c7f4a4c02816602f4c2a4.jpg" id="cat-img" class="valentine-img" alt="Gatito feliz">
+    </div>
+
+    <div class="buttons">
+        <button class="yes" onclick="sayYes()">Sí</button>
+        <button class="no" onmouseover="moveNo()" onclick="changeNoText()">No</button>
+    </div>
+
+    <p class="message" id="loveMessage">💘 ¡Sabía que dirías que sí! Te amo muchísimo 💖</p>
+
+    <script>
+        let noMessages = [
+            "Por qué? 😭",
+            "A Siyeon le gustaría que aceptaras",
+            "Ya no tendrás hokeis",
+            "Recuerda que soy mitad vampira",
+            "Te invito un cafecito 🥹",
+            "Jimin me dijo sue dirías que sí 🧐",
+            "diii que siii"
+        ];
+        let noIndex = 0;
+        let catImg = document.getElementById("cat-img");
+
+        function sayYes() {
+            document.getElementById("loveMessage").style.display = "block";
+            catImg.src = "https://i.pinimg.com/564x/08/45/1c/08451cf648fddcf7071e48d4de26b73f.jpg"; // Imagen de gatito enamorado
+        }
+
+        function moveNo() {
+            let button = document.querySelector(".no");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        function changeNoText() {
+            let noButton = document.querySelector(".no");
+            noButton.textContent = noMessages[noIndex];
+            noIndex = (noIndex + 1) % noMessages.length;
+
+            let yesButton = document.querySelector(".yes");
+            let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 5) + "px";
+
+            catImg.src = "https://i.pinimg.com/564x/0e/49/1f/0e491f308fe1443c484f956dc21b6dc2.jpg"; // Imagen de gatito triste
+        }
+    </script>
+
+</body>
+</html>
